@@ -18,10 +18,11 @@ class Artist
     @id = result[0]["id"].to_i
   end
 
-  # def self.all()
-  #   sql = "SELECT * FROM customers"
-  #   customers = SqlRunner.run(sql)
-  #   customers_array = customers.map{ |customer| Customer.new(customer) }
-  #   return customers_array
-  # end
+  def self.all()
+    sql = "SELECT * FROM artists"
+    results = SqlRunner.run(sql)
+    artist_array = results.map{ |artist| Artist.new(artist) }
+    return artist_array
+  end
+
 end
