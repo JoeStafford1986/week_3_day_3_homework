@@ -23,7 +23,8 @@ class Album
   def self.all()
     sql = "SELECT * FROM albums"
     results = SqlRunner.run(sql)
-    return results.map { |album| Album.new(album) }
+    entire_collection = results.map { |album| Album.new(album) }
+    return entire_collection
   end
 
 end
