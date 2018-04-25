@@ -12,7 +12,7 @@ class Artist
   end
 
   def save()
-    sql = "INSERT INTO artists(name) VALUES($1) RETURNING id"
+    sql = "INSERT INTO artists (name) VALUES ($1) RETURNING id"
     values = [@name]
     result = SqlRunner.run(sql, values)
     @id = result[0]["id"].to_i
@@ -30,6 +30,15 @@ class Artist
     sql = "UPDATE artists SET name = $1 WHERE id = $2"
     values = [@name, @id]
     SqlRunner.run(sql, values)
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM artists WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    artist_hash = results.first
+    artist = Artist.new(artist_hash)
+    return artist
   end
 
   def self.all()
