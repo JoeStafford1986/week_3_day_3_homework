@@ -12,6 +12,8 @@ artist3 = Artist.new({
 "name" => "Luis"
 })
 
+artist1.save()
+
 album1 = Album.new({
 "title" => "Something",
 "genre" => "country",

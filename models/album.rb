@@ -1,5 +1,5 @@
 require_relative('../db/sql_runner')
-require('artist')
+require_relative('artist')
 
 class Album
 
